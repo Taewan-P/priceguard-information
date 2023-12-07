@@ -1,0 +1,58 @@
+
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" type="text/css" href="github-markdown.css"/>
+          <style>
+            .markdown-body {
+              box-sizing: border-box;
+              min-width: 200px;
+              max-width: 980px;
+              margin: 0 auto;
+              padding: 45px;
+            }
+
+            @media (max-width: 767px) {
+              .markdown-body {
+                padding: 15px;
+              }
+            }
+          </style>
+          <title>상품 링크는 어떻게 얻나요? - PriceGuard</title>
+          </head>
+          <body class="markdown-body">
+            <h2 id="상품-등록-방법">상품 등록 방법</h2>
+<p><strong>현재 11번가를 제외한 다른 쇼핑몰 상품은 등록이 불가능합니다.</strong></p>
+<h3 id="직접-등록">직접 등록</h3>
+<ol>
+<li>인터넷 브라우저를 통해 상품 상세 페이지의 링크를 복사합니다.</li>
+<li>PriceGuard앱을 실행한 뒤 링크 입력 화면에서 붙여넣기 합니다.</li>
+</ol>
+<h3 id="공유로-등록">공유로 등록</h3>
+<ol>
+<li>쇼핑몰 앱 상품 화면에서 공유 버튼을 누릅니다.</li>
+<li>PriceGuard앱을 선택합니다.</li>
+<li>링크가 자동으로 복사되어 입력됩니다.</li>
+</ol>
+<p><img src="./images/11st_add_instructions.webp" alt="route_info" /></p>
+            <script>
+              const themeCookie = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('_theme='))
+                ?.split('=')[1];
+
+                if (themeCookie === undefined) {
+                  console.log("Theme color not detected.")
+                }
+
+                if (themeCookie === 'dark') {
+                  document.body.setAttribute('data-theme', 'dark');
+                } else {
+                  document.body.setAttribute('data-theme', 'light');
+                }
+            </script>
+        </body>
+      </html>
+    

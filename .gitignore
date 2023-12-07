@@ -1,0 +1,4 @@
+node_modules/
+convert.js
+dist/
+.DS_Store

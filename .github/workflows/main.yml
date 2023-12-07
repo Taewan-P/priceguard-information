@@ -1,0 +1,60 @@
+name: Generate Custom HTML and Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/main.yml
+      - github-markdown.css
+      - README.md
+      - src/convert.ts
+      - package.json
+      - tsconfig.json
+      - CNAME
+  workflow_dispatch:
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.6.0
+        with:
+          # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+          node-version: 16.13.0
+          # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+          cache: yarn
+          
+      - name: Install Dependencies
+        run: yarn install
+        
+      - name: Build Script
+        run: tsc src/convert.ts
+        
+      - name: Run Script
+        run: node src/convert.js
+
+      - name: Copy image files
+        run: cp -r images/ ./dist/images
+        
+      - name: Copy CNAME File
+        run: cp CNAME ./dist
+
+      - name: Copy CSS File
+        run: cp github-markdown.css ./dist
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist      
+      
+        
+        
+      
+      
+    
